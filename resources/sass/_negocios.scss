@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300&display=swap');
+
+body{
+    font-family: 'Noto Sans HK', sans-serif;
+}
+
+#navbar{
+    background-color: $cinnabar;
+}
+
+#title-link, 
+#navbarDropdown,
+#login-link,
+#register-link{
+    color: $white-ghost;
+}
+
+.imagen-negocio{
+    width: 85%;
+}
+
+#info{
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: #C91A23;
+    
+}
