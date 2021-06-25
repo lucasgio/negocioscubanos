@@ -119,10 +119,10 @@
                     <x-contact-form/>
                 </fieldset>
 
-                <fieldset class="border p-4 mt-5">
+                {{-- <fieldset class="border p-4 mt-5">
                     <h6 class="form-text text-muted"> Imagenes</h6>
                     <div id="dropzone" class="dropzone h-100 form-control"></div>
-                </fieldset>
+                </fieldset> --}}
                 <input type="hidden" name="uuid" id="uuid" value="{{ Str::uuid()->toString() }}">
 
                 <p class="display-6 mt-5">Mapa de ubicación</p>

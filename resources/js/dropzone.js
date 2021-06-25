@@ -9,11 +9,12 @@ document.addEventListener('DOMContentLoaded', ( ) =>{
 
         const dropzone = new Dropzone('div#dropzone',{
 
-            url: '/imagenes/store',
+            url: '../imagenes/store',
             dictDefaultMessage: 'Sube hasta 5 imagenes',
             maxFiles: 5,
             maxFilesize:2000,
             addRemoveLinks:true,
+            method:'post',
             required: true,
             dictRemoveFile:'Eliminar Imagen',
             acceptedFiles: '.jpg,.png',
@@ -21,17 +22,12 @@ document.addEventListener('DOMContentLoaded', ( ) =>{
                 'X-CSRF-TOKEN':document.querySelector('meta[name=csrf-token]').content
             },
             success:function (file,resp) { 
-
-                console.log(file);
                 file.nombreServidor = resp.archivo;
-
             },
             sending:function (file,xhr,formData) { 
                 formData.append('uuid',document.querySelector('#uuid').value);
             },
             removedfile:function(file,resp){
-                console.log(file);
-
                 const params = {
                     imagen:file.nombreServidor
                 }

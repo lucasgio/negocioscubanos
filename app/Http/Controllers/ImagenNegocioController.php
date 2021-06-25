@@ -16,7 +16,7 @@ class ImagenNegocioController extends Controller
     public function store(Request $request)
     {
            // Fit img and Upload to Digital Ocean
-           $file = request() -> file('file');
+           $file = $request-> file('file');
            // Obtain name of file 
            $imageName = $file -> getClientOriginalName();
            // Intervation Image
@@ -25,7 +25,7 @@ class ImagenNegocioController extends Controller
            // Upload and get image
            $imgUploadServer = Storage::disk('spaces')->put('negocios-galeria' . $imageName,$resource);
            // Get back url img from server 
-           $imgServer =Storage::disk(name:'spaces')->url('negocios-galeria'.$imageName);
+           //   $imgServer =Storage::disk(name:'spaces')->url('negocios-galeria'.$imageName);
 
         // Store DB
         $imageDB = new ImagenNegocio;
