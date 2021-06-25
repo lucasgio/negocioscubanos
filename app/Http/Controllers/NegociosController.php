@@ -32,8 +32,8 @@ class NegociosController extends Controller
      */
     public function create()
     {
-        $categoriasNegocio = Categoria::all();
-        return view('negocios.create',compact('categoriasNegocio'));
+        $categorias = Categoria::all();
+        return view('negocios.create',compact('categorias'));
     }
 
     /**
@@ -76,17 +76,6 @@ class NegociosController extends Controller
         
         return back()->with('estado','Se ha registrado tu negocio con exito.Felicidades !!!!');
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Negocios  $negocios
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Negocios $negocios)
-    {
-        //
     }
 
     /**

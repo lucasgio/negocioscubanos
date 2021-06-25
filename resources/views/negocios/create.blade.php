@@ -19,7 +19,6 @@
                 <h4 class="alert-heading">Felicitaciones!</h4>
                 <p>Su negocio se ha registrado con exito.</p>
                 <hr>
-                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
             </div>
         @endif
         <div class="clear-fix">
@@ -27,11 +26,97 @@
             <form action="{{ route('negocios.store') }}" enctype="multipart/form-data" method="POST" novalidate>
                 @csrf
                 <fieldset>
-                    @include('templates.infoformcreate')
+                    <div class="row clear-fix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Nombre del negocio">Nombre del negocio</label>
+                                <input 
+                                    type="text" 
+                                    value="{{ old('nombre') }}" 
+                                    autocomplete="off" 
+                                    name="nombre_negocio" 
+                                    id="nombre_negocio" 
+                                    class="form-control 
+                                    @error('nombre_negocio') is-invalid @enderror"
+                                    placeholder="ej: Pachanga" 
+                                    aria-describedby="helpId"
+                                >
+                                <small id="helpId" class="text-muted">Escriba el nombre del negocio</small>
+                            </div>
+                            @error('nombre_negocio')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>  
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Categoria">Categoria</label>
+                                <select 
+                                    class="form-control 
+                                    @error('categoria') is-invalid @enderror" 
+                                    name="categoria_id" 
+                                    id="categoria"    
+                                >
+                                    <option value="">-- Selecciones una Categoria --</option>
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}" {{ old('categoria') == $categoria->id ? 'selected' : '' }} >{{ $categoria->nombre }}</option>
+                    
+                                    @endforeach
+                                </select>
+                                <small id="helpId" class="text-muted">Indique cual es la categoria de su negocio</small>
+                                @error('categoria')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>  
+                                    </span>
+                                @enderror    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clear-fix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="imagen del negocio">Imagen del negocio</label>
+                                <input 
+                                    type="file" 
+                                    class="form-control-file" 
+                                    name="imagen_principal" 
+                                    id="imagen_principal"
+                                    aria-describedby="fileHelpId">
+                                <small id="fileHelpId" class="form-text text-muted">Sube una imagen de tu negocio.No insertes el
+                                    logotipo</small>
+                            </div>
+                            @error('imagen_principal')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>  
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                             <label for="descripcion">Descripción</label>
+                             <textarea 
+                                class="form-control 
+                                @error('descripcion') is-invalid @enderror" 
+                                placeholder="Restaurante rosa es un espacio para degustar deliciosos platos de la comida cubana e internacional...." 
+                                name="descripcion" 
+                                id="descripcion" 
+                                rows="3"
+                                >
+                            </textarea>
+                           </div>
+                           <small id="fileHelpId" class="form-text text-muted">Haga una pequeña descripción de su negocio</small>
+                           @error('descripcion')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>  
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
                 </fieldset>
 
                 <fieldset class="border p-4 mt-5">
-                    @include('templates.contactformcreate')
+                    <x-contact-form/>
                 </fieldset>
 
                 <fieldset class="border p-4 mt-5">
@@ -50,21 +135,15 @@
                 <div id="mapa" style="height: 500px"></div>
 
                 <fieldset>
-                    @include('templates.forms.localidadformcreate')
+                   <x-localidad-form/>
                 </fieldset>
-                <input type="submit" class="btn btn-primary btn-flat mt-5" value="Guardar informacion">
+                <input type="submit" class="btn btn-primary btn-flat mt-5 mb-5" value="Guardar informacion">
             </form>
         </div>
     </div>
 @endsection
 
 @section('script')
-    <script>
-        var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
-        var collapseList = collapseElementList.map(function(collapseEl) {
-            return new bootstrap.Collapse(collapseEl)
-        })
-    </script>
     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
