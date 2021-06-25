@@ -37,9 +37,9 @@
             </p> 
          </aside>
       </div>
-      <div class="row col-md-8">
+      <!-- <div class="row col-md-8">
          <imagen-gallery></imagen-gallery>
-      </div>
+      </div> -->
 
    </div>
    
