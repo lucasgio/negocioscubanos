@@ -71,9 +71,9 @@ class NegociosController extends Controller
         $img = Image::make($file)->fit(800,600);
         $resource = $img->stream()->detach();
         // Upload and get image
-        $imgUploadServer = Storage::disk('spaces')->put('negocios' . $imageName,$resource);
+        $imgUploadServer = Storage::disk('spaces')->put('negocios/'.$imageName,$resource);
         // Get back url img from server 
-        $imgServer =Storage::disk(name:'spaces')->url('negocios'.$imageName);
+        $imgServer =Storage::disk(name:'spaces')->url('negocios/'.$imageName);
 
         // Store BD bussiness
         $negocios = new Negocios($data);
