@@ -7,6 +7,7 @@ use App\Models\Negocios;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class NegociosController extends Controller
 {
