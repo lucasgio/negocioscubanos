@@ -64,7 +64,7 @@ class NegociosController extends Controller
         // $data = $request->all();    
 
         // Fit img and Upload to Digital Ocean
-        $file = request() -> file('imagen_principal');
+        $file = request()->file('imagen_principal');
         // Obtain name of file 
         $imageName = $file -> getClientOriginalName();
         // Intervation Image

@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-4 mt-4" v-for="restaurant in this.restaurante" v-bind:key="restaurant.id" >
         <div class="card shadow-lg rounded-4">
-          <img class="card-img-top" :src="`storage/${restaurant.imagen_principal}`" alt="Imagenes de restaurantes">
+          <img class="card-img-top" :src="`${restaurant.imagen_principal}`" alt="Imagenes de restaurantes">
           <div class="card-body">
             <h6 class="text-title text-primary">{{restaurant.nombre_negocio}}</h6>
             <h6 class="text-caption text-primary">Ubicacion: {{restaurant.municipio}}</h6>

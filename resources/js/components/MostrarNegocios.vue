@@ -3,7 +3,7 @@
       <p class="display-4 text-muted ">{{negocio.nombre_negocio}}</p>
       <div class="row align-items-start mt-3">
          <div class="col-md-8">
-            <img class="imagen-negocio" :src="`storage/${negocio.imagen_principal}`" alt="Imagen de un negocio">
+            <img class="imagen-negocio" :src="`${negocio.imagen_principal}`" alt="Imagen de un negocio">
             <p class="fw-light w-100 mt-3">
                {{negocio.descripcion}}
             </p>

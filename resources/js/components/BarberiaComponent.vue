@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-4 mt-4" v-for="barberia in this.barberias" v-bind:key="barberia.id" >
         <div class="card shadow-lg rounded-4">
-          <img class="card-img-top" :src="`storage/${barberia.imagen_principal}`" alt="Imagenes de barberias">
+          <img class="card-img-top" :src="`${barberia.imagen_principal}`" alt="Imagenes de barberias">
           <div class="card-body">
             <h6 class="text-title text-primary">{{barberia.nombre_negocio}}</h6>
             <h6 class="text-caption text-primary">Ubicacion: {{barberia.municipio}}</h6>
