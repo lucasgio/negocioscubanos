@@ -62,15 +62,21 @@ class NegociosController extends Controller
 
         // $data = $request->all();    
 
-        // Save image_bussines
-        $rute_img = $request['imagen_principal']->store('main_image','public');
-        // Resize img
-        $img = Image::make(public_path("storage/{$rute_img}"))->fit(800,680);
-        $img->save();
-          
+        // Fit img and Upload to Digital Ocean
+        $file = request() -> file('imagen_principal');
+        // Obtain name of file 
+        $imageName = $file -> getClientOriginalName();
+        // Intervation Image
+        $img = Image::make($file)->fit(800,600);
+        $resource = $img->stream()->detach();
+        // Upload and get image
+        $imgUploadServer = Storage::disk('spaces')->put('negocios' . $imageName,$resource);
+        // Get back url img from server 
+        $imgServer =Storage::disk(name:'spaces')->url('negocios'.$imageName);
+
         // Store BD bussiness
         $negocios = new Negocios($data);
-        $negocios -> imagen_principal = $rute_img;
+        $negocios -> imagen_principal = $imgServer;
         $negocios -> user_id = auth()->user()->id;
         $negocios->save();
         
